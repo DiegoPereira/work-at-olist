@@ -6,6 +6,9 @@ class Channel(models.Model):
     name = models.CharField(max_length=256, unique=True,
                             db_column='name', blank=True)
 
+    class Meta:
+        ordering = ['-id']
+
 
 class Categories(MPTTModel):
     name = models.CharField(max_length=256)

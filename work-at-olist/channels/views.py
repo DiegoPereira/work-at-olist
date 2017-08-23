@@ -18,7 +18,8 @@ class CategoriesViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = []
         channel_name = self.request.query_params.get('channel', None)
-        if channel_name is not None:
+        channel_search = Channel.objects.filter(name=channel_name)
+        if len(channel_search) != 0:
             if channel_name[-1] == "/":
                 channel_name = channel_name[:-1]
             queryset = Categories.objects.all()
