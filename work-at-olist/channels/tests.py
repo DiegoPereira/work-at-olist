@@ -68,7 +68,7 @@ class ImportcategoriesTest(TestCase):
 
     def test_command_output(self):
         out = StringIO()
-        args = ['a', 'olist.csv']
+        args = ['a', 'example.csv']
         call_command('importcategories', *args, stdout=out)
         self.assertIn('Successfully imported the channel', out.getvalue())
         call_command('importcategories', *args, stdout=out)
