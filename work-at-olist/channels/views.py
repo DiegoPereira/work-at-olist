@@ -14,6 +14,7 @@ class ChannelViewSet(viewsets.ModelViewSet):
 class CategoriesViewSet(viewsets.ModelViewSet):
     queryset = Categories.objects.filter(id=0)
     serializer_class = CategoriesSerializer
+
     def get_queryset(self):
         queryset = []
         channel_name = self.request.query_params.get('channel', None)
@@ -37,9 +38,11 @@ class RelativesViewSet(APIView):
             for category in queryset:
                 ancestors = relatives_helper(category.get_ancestors())
                 descendants = relatives_helper(category.get_descendants())
-                dict_response["relatives"].append({"ancestors": ancestors, "descendants":descendants})
+                dict_response["relatives"].append({"ancestors": ancestors,
+                                                   "descendants": descendants})
 
         return JsonResponse(dict_response)
+
 
 def relatives_helper(category_list):
     categories_names = []
