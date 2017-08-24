@@ -13,17 +13,18 @@ sudo apt-get install postgresql postgresql-contrib
 - Create db and user 
 ```
 sudo su - postgres
-createdb mydb
-createuser -P
+createdb <mydb>
+createuser -P <myuser>
 ```
 
 Grant privileges to your user
 ```
 psql
-GRANT ALL PRIVILEGES ON DATABASE mydb TO myuser;
+GRANT ALL PRIVILEGES ON DATABASE <mydb> TO <myuser>;
+ALTER USER <myuser> CREATEDB;
 ```
 
-In the work-at-olist/workatolist/settings.py file, change the database configuration.
+In the file work-at-olist/workatolist/settings.py, change the database configuration using postgres credentials.
 ```
 DATABASES = {
         'default': {
@@ -80,7 +81,7 @@ List all categories of a channel
 ```
 your_host + /channels/categories?channel=<channel_name>
 ```
-Retrieve ancestors and decendants of a category, even that exists two with the same name
+Retrieve ancestors and descendants of a category, even if exists two with the same name
 ```
 your_host + /channels/relatives?category=<category_name>
 ```
