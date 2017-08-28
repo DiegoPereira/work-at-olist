@@ -69,7 +69,7 @@ python manage.py runserver
 
 Heroku link
 
-diegopereiraolist.herokuapp.com/
+https://diegopereiraolist.herokuapp.com/
 
 ## Application API
 
